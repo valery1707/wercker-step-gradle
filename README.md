@@ -21,11 +21,17 @@ build:
       tasks: clean build
 ```
 
+Example project: [wercker-step-gradle-demo](https://github.com/valery1707/wercker-step-gradle-demo)
+
 # License
 
 The MIT License (MIT)
 
 # Changelog
+
+## 0.1.7 (2016-02-18)
+
+- README: add link to example project
 
 ## 0.1.6 (2016-02-18)
 
