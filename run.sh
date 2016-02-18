@@ -3,7 +3,7 @@
 
 # if gradle home dir is not set use subdir in wercker cached dir
 if [ -z "${GRADLE_USER_HOME}" ]; then
-	export GRADLE_USER_HOME="${WERCKER_CACHE_DIR}/gradle/"
+	export GRADLE_USER_HOME="${WERCKER_CACHE_DIR}/gradle"
 fi
 mkdir -p ${GRADLE_USER_HOME}
 
@@ -21,12 +21,12 @@ function g_install() {
 	fi
 
 	# download if not exists
-	G_DOWNLOAD_ROOT=${GRADLE_USER_HOME}/wercker/
+	G_DOWNLOAD_ROOT=${GRADLE_USER_HOME}/wercker
 	G_DOWNLOAD_TARGET=${G_DOWNLOAD_ROOT}/gradle-${WERCKER_GRADLE_VERSION}-bin.zip
 	G_DOWNLOAD_URL=https://services.gradle.org/distributions/gradle-${WERCKER_GRADLE_VERSION}-bin.zip
 	if [ ! -f ${G_DOWNLOAD_TARGET} ]; then
 		curl --silent ${G_DOWNLOAD_URL} --output ${G_DOWNLOAD_TARGET}
-		unzip ${G_DOWNLOAD_TARGET}.zip -d ${G_DOWNLOAD_ROOT}
+		unzip ${G_DOWNLOAD_TARGET} -d ${G_DOWNLOAD_ROOT}
 	fi
 
 	# add to PATH
