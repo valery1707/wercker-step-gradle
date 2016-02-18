@@ -27,6 +27,10 @@ The MIT License (MIT)
 
 # Changelog
 
+## 0.1.6 (2016-02-18)
+
+- Fix download URL
+
 ## 0.1.5 (2016-02-18)
 
 - List files in download directory

@@ -24,10 +24,10 @@ function g_install() {
 	G_DOWNLOAD_ROOT=${GRADLE_USER_HOME}/wercker
 	G_DOWNLOAD_TARGET=${G_DOWNLOAD_ROOT}/gradle-${WERCKER_GRADLE_VERSION}-bin.zip
 	G_GRADLE_DIR=${G_DOWNLOAD_ROOT}/gradle-${WERCKER_GRADLE_VERSION}
-	G_DOWNLOAD_URL=https://services.gradle.org/distributions/gradle-${WERCKER_GRADLE_VERSION}-bin.zip
+	G_DOWNLOAD_URL=https://downloads.gradle.org/distributions/gradle-${WERCKER_GRADLE_VERSION}-bin.zip
 	if [ ! -d ${G_GRADLE_DIR} ]; then
 		mkdir -p ${G_DOWNLOAD_ROOT}
-		curl ${G_DOWNLOAD_URL} --output ${G_DOWNLOAD_TARGET}
+		curl --location ${G_DOWNLOAD_URL} --output ${G_DOWNLOAD_TARGET}
 		ls -la ${G_DOWNLOAD_ROOT}
 		unzip ${G_DOWNLOAD_TARGET} -d ${G_DOWNLOAD_ROOT}
 	fi
