@@ -1,0 +1,14 @@
+name: gradle
+version: 0.1.0
+description: install and run gradle
+keywords:
+  - gradle
+  - java
+properties:
+  version:
+    type: string
+    required: false
+    default: current
+  tasks:
+    type: string
+    required: true
