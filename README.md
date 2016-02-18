@@ -27,6 +27,10 @@ The MIT License (MIT)
 
 # Changelog
 
+## 0.1.3 (2016-02-18)
+
+- More verbose while download distribution
+
 ## 0.1.2 (2016-02-18)
 
 - Fix unzip gradle distribution
