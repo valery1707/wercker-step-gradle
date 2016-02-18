@@ -14,7 +14,7 @@ fi
 
 function g_install() {
 	# if no version is provided use the default - current
-	if [ -z "${WERCKER_GRADLE_VERSION}" ]; then
+	if [ -z "${WERCKER_GRADLE_VERSION}" -o "current" == "${WERCKER_GRADLE_VERSION}" ]; then
 		info "Detect current gradle version"
 		export WERCKER_GRADLE_VERSION=$(curl --silent https://services.gradle.org/versions/current | grep '"version"' | cut -d '"' -f4)
 		info "Use gradle ${WERCKER_GRADLE_VERSION}"
@@ -25,7 +25,7 @@ function g_install() {
 	G_DOWNLOAD_TARGET=${G_DOWNLOAD_ROOT}/gradle-${WERCKER_GRADLE_VERSION}-bin.zip
 	G_DOWNLOAD_URL=https://services.gradle.org/distributions/gradle-${WERCKER_GRADLE_VERSION}-bin.zip
 	if [ ! -f ${G_DOWNLOAD_TARGET} ]; then
-		curl ${G_DOWNLOAD_URL} --output ${G_DOWNLOAD_TARGET}
+		curl --silent ${G_DOWNLOAD_URL} --output ${G_DOWNLOAD_TARGET}
 		unzip ${G_DOWNLOAD_TARGET}.zip -d ${G_DOWNLOAD_ROOT}
 	fi
 
