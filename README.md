@@ -27,6 +27,10 @@ The MIT License (MIT)
 
 # Changelog
 
+## 0.1.4 (2016-02-18)
+
+- Make directory for download root
+
 ## 0.1.3 (2016-02-18)
 
 - More verbose while download distribution
