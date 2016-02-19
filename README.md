@@ -29,6 +29,10 @@ The MIT License (MIT)
 
 # Changelog
 
+## 0.1.8 (2016-02-19)
+
+- Make scripts POSIX-compatible
+
 ## 0.1.7 (2016-02-18)
 
 - README: add link to example project

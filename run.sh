@@ -5,18 +5,19 @@
 if [ -z "${GRADLE_USER_HOME}" ]; then
 	export GRADLE_USER_HOME="${WERCKER_CACHE_DIR}/gradle"
 fi
-mkdir -p ${GRADLE_USER_HOME}
+mkdir -p "${GRADLE_USER_HOME}"
 
 # check tasks argument
 if [ -z "${WERCKER_GRADLE_TASKS}" ]; then
 	fail "Please provide a Gradle tasks"
 fi
 
-function g_install() {
+g_install() {
 	# if no version is provided use the default - current
-	if [ -z "${WERCKER_GRADLE_VERSION}" -o "current" == "${WERCKER_GRADLE_VERSION}" ]; then
+	if [ -z "${WERCKER_GRADLE_VERSION}" ] || [ "current" = "${WERCKER_GRADLE_VERSION}" ]; then
 		info "Detect current gradle version"
-		export WERCKER_GRADLE_VERSION=$(curl --silent https://services.gradle.org/versions/current | grep '"version"' | cut -d '"' -f4)
+		WERCKER_GRADLE_VERSION=$(curl --silent https://services.gradle.org/versions/current | grep '"version"' | cut -d '"' -f4)
+		export WERCKER_GRADLE_VERSION
 		info "Use gradle ${WERCKER_GRADLE_VERSION}"
 	fi
 
@@ -25,11 +26,11 @@ function g_install() {
 	G_DOWNLOAD_TARGET=${G_DOWNLOAD_ROOT}/gradle-${WERCKER_GRADLE_VERSION}-bin.zip
 	G_GRADLE_DIR=${G_DOWNLOAD_ROOT}/gradle-${WERCKER_GRADLE_VERSION}
 	G_DOWNLOAD_URL=https://downloads.gradle.org/distributions/gradle-${WERCKER_GRADLE_VERSION}-bin.zip
-	if [ ! -d ${G_GRADLE_DIR} ]; then
-		mkdir -p ${G_DOWNLOAD_ROOT}
-		curl --location ${G_DOWNLOAD_URL} --output ${G_DOWNLOAD_TARGET}
-		ls -la ${G_DOWNLOAD_ROOT}
-		unzip ${G_DOWNLOAD_TARGET} -d ${G_DOWNLOAD_ROOT}
+	if [ ! -d "${G_GRADLE_DIR}" ]; then
+		mkdir -p "${G_DOWNLOAD_ROOT}"
+		curl --location "${G_DOWNLOAD_URL}" --output "${G_DOWNLOAD_TARGET}"
+		debug "$(ls -la "${G_DOWNLOAD_ROOT}")"
+		unzip "${G_DOWNLOAD_TARGET}" -d "${G_DOWNLOAD_ROOT}"
 	fi
 
 	# add to PATH
@@ -62,4 +63,4 @@ fi
 G_OPTS=--no-search-upward
 
 # run gradle
-${G_RUNNER} ${G_OPTS} ${WERCKER_GRADLE_TASKS}
+${G_RUNNER} ${G_OPTS} "${WERCKER_GRADLE_TASKS}"
