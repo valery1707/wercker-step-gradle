@@ -63,4 +63,4 @@ fi
 G_OPTS=--no-search-upward
 
 # run gradle
-${G_RUNNER} ${G_OPTS} "${WERCKER_GRADLE_TASKS}"
+${G_RUNNER} ${G_OPTS} ${WERCKER_GRADLE_TASKS}

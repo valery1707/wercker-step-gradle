@@ -28,6 +28,10 @@ The MIT License (MIT)
 
 # Changelog
 
+## 0.1.9 (2016-02-19)
+
+- Fix run Gradle
+
 ## 0.1.8 (2016-02-19)
 
 - Make scripts POSIX-compatible
