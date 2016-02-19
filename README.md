@@ -1,4 +1,3 @@
-# wercker-step-gradle
 Gradle step for [wercker](https://app.wercker.com/) written in `bash` and `curl`.
 
 If your project includes the `gradlew` wrapper script in the repository root, step will try to use it instead of install Gradle in standalone mode.
@@ -32,6 +31,7 @@ The MIT License (MIT)
 ## 0.1.8 (2016-02-19)
 
 - Make scripts POSIX-compatible
+- README: polish
 
 ## 0.1.7 (2016-02-18)
 
@@ -59,7 +59,7 @@ The MIT License (MIT)
 
 ## 0.1.1 (2016-02-18)
 
-- Update README
+- README: describe behavior in case wrapper script usage
 - Test for default value in `version`
 
 ## 0.1.0 (2016-02-18)
